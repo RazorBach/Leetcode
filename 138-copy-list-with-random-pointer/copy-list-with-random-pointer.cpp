@@ -38,11 +38,10 @@ public:
         cur = head;
         RandomListNode* prev = new RandomListNode(INT_MIN),*newhead = prev;
         while(cur) {
-            RandomListNode* curnext = cur->next->next;
             prev->next = cur->next;
-            prev = cur->next;
-            cur->next = curnext;
-            cur = curnext;
+            prev = prev->next;
+            cur->next = prev->next;
+            cur = cur->next;
         }
         return newhead->next;
     }

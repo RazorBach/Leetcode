@@ -1,7 +1,5 @@
 # :pencil2: Leetcode Solutions with Cpp
-Update time:  2018-05-04 09:48:19
-
-Auto created by [leetcode_generate](https://github.com/bonfy/leetcode)
+Update time:  2018-05-04 10:15:03
 
 I have solved **163   /   742** problems
 while there are **133** problems still locked.
