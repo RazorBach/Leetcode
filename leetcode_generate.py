@@ -574,19 +574,19 @@ If you are loving solving problems in leetcode, please contact me to enjoy it to
 
 def do_job(leetcode):
     leetcode.load()
-    # print('Leetcode load self info')
-    # if len(sys.argv) == 1:
-    #     # simple download
-    #     # leetcode.dowload()
-    #     # we use multi thread
-    #     print('download all leetcode solutions')
-    #     # leetcode.download_with_thread_pool()
-    #     leetcode.download()
-    # else:
-    #     for qid in sys.argv[1:]:
-    #         print('begin leetcode by id: {id}'.format(id=qid))
-    #         leetcode.download_by_id(int(qid))
-    # print('Leetcode finish dowload')
+    print('Leetcode load self info')
+    if len(sys.argv) == 1:
+        # simple download
+        # leetcode.dowload()
+        # we use multi thread
+        print('download all leetcode solutions')
+        # leetcode.download_with_thread_pool()
+        leetcode.download()
+    else:
+        for qid in sys.argv[1:]:
+            print('begin leetcode by id: {id}'.format(id=qid))
+            leetcode.download_by_id(int(qid))
+    print('Leetcode finish dowload')
     leetcode.write_readme()
     print('Leetcode finish write readme')
     leetcode.push_to_github()
