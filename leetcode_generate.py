@@ -500,8 +500,6 @@ Update time:  {tm}
 I have solved **{num_solved}   /   {num_total}** problems
 while there are **{num_lock}** problems still locked.
 
-If you want to use this tool please follow this [Usage Guide](https://github.com/bonfy/leetcode/blob/master/README_leetcode_generate.md)
-
 If you have any question, please give me an [issue]({repo}/issues).
 
 If you are loving solving problems in leetcode, please contact me to enjoy it together!
