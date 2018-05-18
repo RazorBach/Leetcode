@@ -1,21 +1,23 @@
-calumny & è®½åˆºçš„
-consummate & ç›¸åŒçš„
-complimentary & åŒæ—¶æœŸçš„?
-disperse & æ‚ä¹±æ— ç« çš„
-discriminate & æ´¾ç”Ÿè¯
-dwindle& é˜»æ­¢
-eccentric & éš¾æ‡‚çš„
-//eqå®¶æ—
-equable å¹³é™ or å¹³ç­‰?
-glut & æ‚²ä¼¤çš„ & å¤šå›½è¯­è¨€
+calumny & ·í´ÌµÄ
+consummate & ÏàÍ¬µÄ
+complimentary & Í¬Ê±ÆÚµÄ?
+disperse & ÔÓÂÒÎŞÕÂµÄ
+discriminate & ÅÉÉú´Ê
+dwindle& ×èÖ¹
+eccentric & ÄÑ¶®µÄ
+//eq¼Ò×å
+equable Æ½¾² or Æ½µÈ?
+glut & ±¯ÉËµÄ & ¶à¹úÓïÑÔ
 -guish(languish)
 
-levity & å†·æ·¡
-predicate & implicate
-rebuke & æ­éœ²
-tactful & æ˜“äºç®¡ç†çš„?
-tirade & å¿æ‚”
-urbane & è´«ç˜ çš„ ä¸å­•çš„
+levity & Àäµ­
+malleable & ·ş´ÓµÄ
+predicate & °üÀ¨£¿
+quell & ¾Ó×¡£¿
+rebuke & ½ÒÂ¶
+tactful & Ò×ÓÚ¹ÜÀíµÄ?
+tirade & âã»Ú
+urbane & Æ¶ñ¤µÄ ²»ÔĞµÄ
 
 ----------------------
 aberrant
@@ -24,8 +26,8 @@ exuberant
 adverse
 averse
 
-ambiguous        ((sth.) å¼•èµ·æ­§ä¹‰çš„)
-ambivalent       ((sb.) çŸ›ç›¾çš„)
+ambiguous        ((sth.) ÒıÆğÆçÒåµÄ)
+ambivalent       ((sb.) Ã¬¶ÜµÄ)
 
 amble
 ample
@@ -93,12 +95,10 @@ collective
 
 contiguous
 contagious
+continuous
 
 contrite
 trite
-
-convene
-intervene
 
 conundrum
 humdrum
@@ -177,9 +177,6 @@ renounce
 deposit
 despot
 
-dwell
-quell
-
 discreet
 discrete
 
@@ -190,9 +187,6 @@ discriminative - discriminatory
 
 detract - divert - diverge* - deviate - deflect
 divest
-
-downcast
-downright
 
 dwindle
 swindle
@@ -300,18 +294,12 @@ sloth
 lugubrious
 ludicrous
 
-lure
-allure
-
 meddle
 muddle
 
 meld
 mold
 molder
-
-misgiving
-mishap
 
 modest
 modish
@@ -325,17 +313,14 @@ monochromatic
 millstone
 milestone
 
+obstinate
+obdurate
+
 object (v.)
 objectionable
 objective
 project (v.)
 subject (v.)
-
-obstinate
-obdurate
-
-obtuse
-acute
 
 palpable
 palatable
@@ -393,9 +378,6 @@ distend
 pugnacious
 repugnant
 
-qualm
-quash
-
 repudiate
 duplicate
 duplicitous
@@ -403,10 +385,16 @@ duplicitous
 refute
 rebut
 
+lure
+allure
+
+obtuse
+acute
+
 antecedent
 precedent
 
-prodigal(å¥¢ä¾ˆ)
+prodigal(Éİ³Ş)
 
 recondite
 reconcile
@@ -443,7 +431,10 @@ skirt
 slander
 slender
 
-snob
+
+slug - sluggish
+snap - snappish
+snob - snobbish
 snub
 
 somber
@@ -478,9 +469,6 @@ nonplus
 tarnish
 varnish
 
-testy
-testing
-
 transmit
 transform
 
@@ -505,9 +493,3 @@ whit
 
 unexceptionable
 unexceptional
-
-upbeat
-uprising
-uproot
-upshot
-
