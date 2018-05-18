@@ -177,6 +177,9 @@ renounce
 deposit
 despot
 
+dwell
+quell
+
 discreet
 discrete
 
@@ -187,6 +190,9 @@ discriminative - discriminatory
 
 detract - divert - diverge* - deviate - deflect
 divest
+
+downcast
+downright
 
 dwindle
 swindle
@@ -294,8 +300,14 @@ sloth
 lugubrious
 ludicrous
 
+lure
+allure
+
 meddle
 muddle
+
+misgiving
+mishap
 
 meld
 mold
@@ -377,6 +389,9 @@ distend
 
 pugnacious
 repugnant
+
+qualm
+quash
 
 repudiate
 duplicate
@@ -469,6 +484,8 @@ nonplus
 tarnish
 varnish
 
+testy
+testing
 transmit
 transform
 
@@ -493,3 +510,8 @@ whit
 
 unexceptionable
 unexceptional
+
+upbeat
+uprising
+uproot
+upshot
