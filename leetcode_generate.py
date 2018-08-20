@@ -1,8 +1,5 @@
 # coding:utf-8
 #
-# Author: BONFY<foreverbonfy@163.com>
-# Github: https://github.com/bonfy
-# Repo:   https://github.com/bonfy/leetcode
 # Usage:  Leetcode solution downloader and auto generate readme
 #
 import requests
@@ -202,10 +199,17 @@ class Leetcode:
             chrome_options=options, executable_path=executable_path
         )
         driver.get(LOGIN_URL)
-        driver.find_element_by_id('id_login').send_keys(usr)
-        driver.find_element_by_id('id_password').send_keys(pwd)
+        
+        # Wait for update
+        time.sleep(10)
+
+        driver.find_element_by_name('login').send_keys(usr)
+        driver.find_element_by_name('password').send_keys(pwd)
         # driver.find_element_by_id('id_remember').click()
-        driver.find_element_by_xpath('//button[@type="submit"]').click()
+        btns = driver.find_elements_by_tag_name('button')
+        # print(btns)
+        submit_btn = btns[1]
+        submit_btn.click()
         time.sleep(5)
         webdriver_cookies = driver.get_cookies()
         driver.close()
