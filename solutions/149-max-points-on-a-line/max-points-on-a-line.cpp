@@ -31,6 +31,8 @@
 // 0  1  2  3  4  5  6
 //
 //
+// NOTE: input types have been changed on April 15, 2019. Please reset to default code definition to get new method signature.
+//
 
 
 /**

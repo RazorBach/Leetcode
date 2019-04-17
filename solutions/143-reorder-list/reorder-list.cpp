@@ -29,7 +29,7 @@ public:
     void reorderList(ListNode* head) {
         if(!head || !head->next) return;
         ListNode *slow = head, *fast = head;
-        while(fast && fast->next && fast->next->next) {
+        while(fast && fast->next) {
             slow = slow->next;
             fast = fast->next->next;
         }
@@ -43,7 +43,7 @@ public:
             l2 = next;
         }
         
-        //pre is the head of l2
+        //pre is the head of l2,merge l1 and l2
         ListNode *next = head,*next2 = pre;
         while(pre){
             next = next->next;

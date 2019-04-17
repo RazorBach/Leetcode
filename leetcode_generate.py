@@ -3,8 +3,8 @@
 # Usage:  Leetcode solution downloader and auto generate readme
 #
 import requests
-import configparser
 import os
+import configparser
 import json
 import time
 import datetime
@@ -12,12 +12,15 @@ import re
 import sys
 import html
 
+from pathlib import Path
 from selenium import webdriver
 from collections import namedtuple, OrderedDict
 
-HOME = os.getcwd()
-CONFIG_FILE = os.path.join(HOME, 'config.cfg')
-COOKIE_PATH = 'cookies.json'
+HOME = Path.cwd()
+SOLUTION_FOLDER_NAME = 'solutions'
+SOLUTION_FOLDER = Path.joinpath(HOME, SOLUTION_FOLDER_NAME)
+CONFIG_FILE = Path.joinpath(HOME, 'config.cfg')
+COOKIE_PATH = Path.joinpath(HOME, 'cookies.json')
 BASE_URL = 'https://leetcode.com'
 # If you have proxy, change PROXIES below
 PROXIES = None
@@ -82,8 +85,9 @@ def rep_unicode_in_code(code):
 
 
 def check_and_make_dir(dirname):
-    if not os.path.exists(dirname):
-        os.mkdir(dirname)
+    p = Path(dirname)
+    if not p.exists():
+        p.mkdir(parents=True)
 
 
 ProgLang = namedtuple('ProgLang', ['language', 'ext', 'annotation'])
@@ -99,6 +103,8 @@ ProgLangList = [
     ProgLang('kotlin', 'kt', '//'),
     ProgLang('swift', 'swift', '//'),
     ProgLang('golang', 'go', '//'),
+    ProgLang('scala', 'scala', '//'),
+    ProgLang('rust', 'rs', '//'),
 ]
 ProgLangDict = dict((item.language, item) for item in ProgLangList)
 CONFIG = get_config_from_file()
@@ -199,7 +205,7 @@ class Leetcode:
             chrome_options=options, executable_path=executable_path
         )
         driver.get(LOGIN_URL)
-        
+
         # Wait for update
         time.sleep(10)
 
@@ -210,6 +216,7 @@ class Leetcode:
         # print(btns)
         submit_btn = btns[1]
         submit_btn.click()
+
         time.sleep(5)
         webdriver_cookies = driver.get_cookies()
         driver.close()
@@ -286,7 +293,7 @@ class Leetcode:
     def is_login(self):
         """ validate if the cookie exists and not overtime """
         api_url = self.base_url + '/api/problems/algorithms/'  # NOQA
-        if not os.path.exists(COOKIE_PATH):
+        if not COOKIE_PATH.exists():
             return False
 
         with open(COOKIE_PATH, 'r') as f:
@@ -306,13 +313,19 @@ class Leetcode:
     def load_submissions(self):
         """ load all submissions from leetcode """
         # set limit a big num
+        print('API load submissions request 2 seconds per request')
+        print('Please wait ...')
         limit = 20
         offset = 0
+        last_key = ''
         while True:
-            submissions_url = '{}/api/submissions/?format=json&limit={}&offset={}'.format(
-                self.base_url, limit, offset
+            print('try to load submissions from ', offset, ' to ', offset+limit)
+            submissions_url = '{}/api/submissions/?format=json&limit={}&offset={}&last_key={}'.format(
+                self.base_url, limit, offset, last_key
             )
+            
             resp = self.session.get(submissions_url, proxies=PROXIES)
+            # print(submissions_url, ':', resp.status_code)
             assert resp.status_code == 200
             data = resp.json()
             if 'has_next' not in data.keys():
@@ -321,6 +334,9 @@ class Leetcode:
             self.submissions += data['submissions_dump']
             if data['has_next']:
                 offset += limit
+                last_key = data['last_key']
+                # print('last_key:', last_key)
+                time.sleep(2.5)
             else:
                 break
 
@@ -447,15 +463,15 @@ class Leetcode:
             )
             return
 
-        dirname = '{id}-{title}'.format(id=str(qid).zfill(3), title=qtitle)
-        print('begin download ' + dirname)
-        check_and_make_dir(dirname)
-        path = os.path.join(HOME, dirname)
+        qname = '{id}-{title}'.format(id=str(qid).zfill(3), title=qtitle)
+        print('begin download ' + qname)
+        path = Path.joinpath(SOLUTION_FOLDER, qname)
+        check_and_make_dir(path)
         for slt in slts:
             fname = '{title}.{ext}'.format(
                 title=qtitle, ext=self.prolangdict[slt['lang']].ext
             )
-            filename = os.path.join(path, fname)
+            filename = Path.joinpath(path, fname)
             content = self._get_code_with_anno(slt)
             import codecs
 
@@ -530,7 +546,8 @@ If you are loving solving problems in leetcode, please contact me to enjoy it to
                 language = ':lock:'
             else:
                 if item.solutions:
-                    dirname = '{id}-{title}'.format(
+                    dirname = '{folder}/{id}-{title}'.format(
+                        folder=SOLUTION_FOLDER_NAME,
                         id=str(item.question_id).zfill(3),
                         title=item.question__title_slug,
                     )
