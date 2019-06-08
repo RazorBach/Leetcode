@@ -31,27 +31,19 @@
 class Solution {
 public:
     vector<string> binaryTreePaths(TreeNode* root) {
-        vector<string> ret;
-        string str = "";
-        // ret.push_back(str);
-        TreeNode* p = root;
-        stack<TreeNode*> s;
-        map<TreeNode*, string> map;
-        while(!s.empty() || p) {
-            while(p){
-                s.push(p);
-                str += "->" + std::to_string(p->val) ;
-                map[p] = str;
-                p = p->left;
-            }
-            p = s.top();
-            s.pop();
-            if(p->right)
-                str = map[p];
-            else if(!p->right && !p->left)
-                ret.push_back(str.substr(2));
-            p = p->right;
-        }
-        return ret;
+        vector<string> res;
+        string s;
+        helper(root, s, res);
+        return res;
+    }
+private:
+    void helper(TreeNode* cur, string str, vector<string>& res) {
+        if(!cur)
+            return;
+        str += "->" + std::to_string(cur->val);
+        helper(cur->left, str, res);
+        helper(cur->right, str, res);
+        if(!cur->left && !cur->right)
+            res.emplace_back(str.substr(2));
     }
 };

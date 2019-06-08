@@ -13,36 +13,43 @@
 // 	If there is no such window in S that covers all characters in T, return the empty string "".
 // 	If there is such window, you are guaranteed that there will always be only one unique minimum window in S.
 //
+//
 
 
 class Solution {
 public:
     string minWindow(string s, string t) {
-        vector<int> map(128, 0);
-        for(auto c : t) {
-            map[c]++;
+        int req = t.size();
+        vector<int> sub(256, 0);
+        for(int i = 0; i < req; ++i) {
+            sub[t[i]]++;
         }
-        int minStart = 0, len = INT_MAX, start = 0, end = 0, cnt = t.size();
-        while(end < s.size()) {
-            if(map[s[end]] > 0) {
-                cnt--;
+        int left = 0, right = 0, start = 0, len = INT_MAX;
+        while(right < s.size()) {
+            //move the right window
+            while(req > 0) {
+                if(right == s.size()) break;
+                if(sub[s[right]] > 0) req--;
+                //sub-- for all chars, those not in t will be negative
+                sub[s[right]]--;
+                right++;
             }
-            map[s[end]]--;
-            end++;
-            while(0 == cnt) {
-                if(end - start < len) {
-                    len = end - start ;
-                    minStart = start;
+            //move the left window --todo
+            while(0 == req && left < right) {
+                if(0 == sub[s[left]] ) {
+                    req++;
+                    if(right - left < len) {
+                        len = right - left;
+                        start = left;
+                    }
                 }
-                if(map[s[start]] == 0) {
-                    cnt++;
-                }
-                map[s[start]]++;
-                start++;
+                sub[s[left]]++;
+                left++;
             }
+            
         }
         if(len == INT_MAX)
             return "";
-        return s.substr(minStart , len);
+        return s.substr(start, len);
     }
 };

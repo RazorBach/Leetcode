@@ -23,7 +23,9 @@ public:
         ListNode** pp = &head;
         while(*pp) {
             if((*pp)->val == val) {
+                ListNode* tmp = *pp;
                 *pp = (*pp)->next;
+                delete tmp;
             }else{
                 pp = &(*pp)->next;
             }

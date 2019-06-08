@@ -33,8 +33,8 @@
 
 class Solution {
 public:
-    bool canFinish(int numCourses, vector<pair<int, int>>& prerequisites) {
-        vector<unordered_set<int>> graph = make_graph(numCourses, prerequisites);
+    bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
+        vector<vector<int>> graph = make_graph(numCourses, prerequisites);
         vector<int> indegree = compute_indegree(numCourses, graph);
         for(int j = 0; j < numCourses; ++j){
             int i = 0;
@@ -50,15 +50,15 @@ public:
         return true;
     }
 private:
-    vector<unordered_set<int>> make_graph(const int numCourses,vector<pair<int, int>>& prerequisites) {
-        vector<unordered_set<int>> graph(numCourses, unordered_set<int>());
+    vector<vector<int>> make_graph(const int numCourses,vector<vector<int>>& prerequisites) {
+        vector<vector<int>> graph(numCourses, vector<int>());
         for(auto edge : prerequisites) {
-            graph[edge.second].insert(edge.first);
+            graph[edge[1]].push_back(edge[0]);
         }
         return graph;
     }
     
-    vector<int> compute_indegree(const int numCourses,const vector<unordered_set<int>>& graph) {
+    vector<int> compute_indegree(const int numCourses,const vector<vector<int>>& graph) {
         vector<int> indegree(numCourses);
         for(auto ad_set : graph)
             for(auto id : ad_set) {

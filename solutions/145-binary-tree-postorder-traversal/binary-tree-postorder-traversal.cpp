@@ -29,21 +29,21 @@
 class Solution {
 public:
     vector<int> postorderTraversal(TreeNode* root) {
+        stack<TreeNode*> visit;
+        TreeNode* cur = root, *prev = nullptr;
         vector<int> ret;
-        stack<TreeNode*> toVisit;
-        TreeNode* cur = root,*pre = nullptr;
-        while(cur || !toVisit.empty()) {
+        while(cur || !visit.empty()) {
             if(cur) {
-                toVisit.push(cur);
+                visit.push(cur);
                 cur = cur->left;
-            }else{
-                cur = toVisit.top();
-                if(cur->right && cur->right != pre) {
+            }else {
+                cur = visit.top();
+                if(cur->right && cur->right != prev) {
                     cur = cur->right;
                 }else{
                     ret.push_back(cur->val);
-                    toVisit.pop();
-                    pre = cur;
+                    visit.pop();
+                    prev = cur;
                     cur = nullptr;
                 }
             }

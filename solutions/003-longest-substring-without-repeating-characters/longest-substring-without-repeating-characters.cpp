@@ -30,23 +30,22 @@
 //
 //
 //
+//
 
 
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        vector<int> letter(128, -1);
-        int len(0), start(0), end(0);
-        for(int i = 0; i < s.length(); ++i) {
-            if(letter[s[i]] >= start) {
-                start = letter[s[i]] + 1 ;
+        vector<int> sub(256, -1);
+        int maxlen = 0, last = -1;
+        for(int i = 0; i < s.size(); ++i) {
+            if(sub[s[i]] > last) {
+                last = sub[s[i]] ;
             }
-            end = i;
-            letter[s[i]] = i;
-            if(end - start + 1 > len) {
-                len = end - start + 1;
-            }
+            int tmp = i - last;
+            maxlen = max(tmp, maxlen);
+            sub[s[i]] = i;
         }
-        return len;
+        return maxlen;
     }
 };
